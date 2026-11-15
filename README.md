@@ -7,7 +7,7 @@ You are viewing a page; one click points one of your tap links at it.
 
 1. Open `chrome://extensions`.
 2. Turn on **Developer mode** (top right).
-3. Click **Load unpacked** and select this `extension/` directory.
+3. Click **Load unpacked** and select this directory (the repo root).
 4. Pin "Tap.Giving NFC Tap Links" from the extensions menu if you like.
 
 ## Use it
