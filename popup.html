@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tap.Giving NFC Tap Links</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <span class="mark" aria-hidden="true"></span>
+    <h1>Tap.Giving NFC Tap Links</h1>
+  </header>
+
+  <main id="view-loading">
+    <p class="muted">Loading…</p>
+  </main>
+
+  <main id="view-login" hidden>
+    <p id="login-note">Sign in to the Redirect Dashboard to see your tap links.</p>
+    <button id="btn-login" class="primary">Open the dashboard sign-in</button>
+    <p class="muted small">The extension uses your dashboard sign-in. It never sees your password.</p>
+  </main>
+
+  <main id="view-links" hidden>
+    <p class="label">Point a tap link at this page:</p>
+    <p id="tab-url" class="url"></p>
+    <p id="tab-url-warning" class="warning" hidden>This page's address can't be a link destination (only http and https pages work).</p>
+    <input id="filter" type="search" placeholder="Filter your links" hidden>
+    <div id="link-list"></div>
+    <p id="no-links" class="muted" hidden>No tap links yet. Create one in the dashboard first.</p>
+    <button id="btn-open-dashboard" class="ghost">Open the dashboard</button>
+  </main>
+
+  <main id="view-confirm" hidden>
+    <p class="label">Point this tap link here?</p>
+    <p id="confirm-slug" class="slug"></p>
+    <p class="label">It currently goes to:</p>
+    <p id="confirm-current" class="url"></p>
+    <p class="label">It will go to:</p>
+    <p id="confirm-new" class="url"></p>
+    <div class="row">
+      <button id="btn-back" class="ghost">Back</button>
+      <button id="btn-confirm" class="primary">Point it here</button>
+    </div>
+    <p id="confirm-error" class="warning" hidden></p>
+  </main>
+
+  <main id="view-result" hidden>
+    <p id="result-text"></p>
+    <button id="btn-done" class="primary">Done</button>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
