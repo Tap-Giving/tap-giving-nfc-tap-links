@@ -23,10 +23,16 @@ var LOGIN_URL = ORIGIN + '/dashboard/login';
 var SESSION_COOKIE = ['session', 'token'].join('_');
 var CSRF_COOKIE = ['csrf', 'token'].join('_');
 
+var SESSION_TTL_SECONDS = 3600; // mirrors the server's session cookie Max-Age
+var FRESH_SESSION_WINDOW_MS = 60 * 1000;
+var BANNER_DISMISS_MS = 4000;
+
 var state = {
   tabUrl: null,
   tabUsable: false,
   session: null,
+  sessionFresh: false,
+  bannerShown: false,
   csrf: null,
   links: [],
   domains: {},
@@ -68,6 +74,25 @@ function getCookie(name) {
       resolve(cookie && cookie.value ? cookie.value : null);
     });
   });
+}
+
+function getCookieDetails(name) {
+  return new Promise(function (resolve) {
+    chrome.cookies.get({ url: ORIGIN, name: name }, function (cookie) {
+      resolve(cookie || null);
+    });
+  });
+}
+
+// A session counts as fresh when its cookie was minted within the
+// freshness window: the server always sets the session cookie with
+// Max-Age=SESSION_TTL_SECONDS, so mint time = expirationDate - TTL.
+// Both sides are browser-clock based, so clock skew cancels.
+function sessionIsFresh(cookie) {
+  if (!cookie || cookie.session || !cookie.expirationDate) return false;
+  var mintedAtMs = (cookie.expirationDate - SESSION_TTL_SECONDS) * 1000;
+  var ageMs = Date.now() - mintedAtMs;
+  return ageMs >= 0 && ageMs <= FRESH_SESSION_WINDOW_MS;
 }
 
 function api(path, options) {
@@ -185,6 +210,20 @@ function pointLinkHere() {
   });
 }
 
+function showConnectBanner(name) {
+  var banner = $('connect-banner');
+  banner.textContent = name ? 'Connected as ' + name : 'Connected';
+  banner.hidden = false;
+  document.body.classList.add('just-connected');
+  var dismiss = function () {
+    banner.hidden = true;
+    document.body.classList.remove('just-connected');
+    banner.removeEventListener('click', dismiss);
+  };
+  banner.addEventListener('click', dismiss);
+  setTimeout(dismiss, BANNER_DISMISS_MS);
+}
+
 function loadLinks() {
   api('/links?limit=1000').then(function (res) {
     if (res.status === 401) {
@@ -198,6 +237,14 @@ function loadLinks() {
     state.links = res.body.data.filter(function (l) { return l.status !== 'deleted'; });
     show('view-links');
     renderLinks();
+    if (state.sessionFresh && !state.bannerShown) {
+      state.bannerShown = true;
+      api('/auth/me').then(function (res) {
+        var name = res.body && res.body.data
+          ? (res.body.data.username || res.body.data.email) : null;
+        showConnectBanner(name);
+      }).catch(function () { showConnectBanner(null); });
+    }
     // Best effort: domain names for display. Failure changes nothing.
     api('/domains').then(function (dres) {
       if (dres.body && Array.isArray(dres.body.data)) {
@@ -218,8 +265,10 @@ function start() {
     $('tab-url').textContent = state.tabUrl || '(no page address available)';
     $('tab-url-warning').hidden = state.tabUsable;
 
-    Promise.all([getCookie(SESSION_COOKIE), getCookie(CSRF_COOKIE)]).then(function (values) {
-      state.session = values[0];
+    Promise.all([getCookieDetails(SESSION_COOKIE), getCookie(CSRF_COOKIE)]).then(function (values) {
+      var sessionCookie = values[0];
+      state.session = sessionCookie && sessionCookie.value ? sessionCookie.value : null;
+      state.sessionFresh = sessionIsFresh(sessionCookie);
       state.csrf = values[1];
       if (!state.session) {
         showLogin();

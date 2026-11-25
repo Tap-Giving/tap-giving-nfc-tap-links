@@ -28,21 +28,8 @@ header .mark {
   width: 20px;
   height: 20px;
   border-radius: 5px;
-  background: var(--brand);
-  position: relative;
   flex: none;
-}
-
-header .mark::after {
-  content: "";
-  position: absolute;
-  left: 5px;
-  bottom: 5px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35), 0 0 0 6px rgba(255, 255, 255, 0.18);
+  display: block;
 }
 
 h1 {
@@ -150,3 +137,18 @@ button:disabled { opacity: 0.5; cursor: default; }
   word-break: break-all;
   margin-top: 2px;
 }
+
+.connect-banner {
+  background: #eef3f8;
+  border: 1px solid var(--brand);
+  border-radius: 8px;
+  color: var(--brand);
+  font-weight: 600;
+  padding: 9px 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.connect-banner::before { content: "\2713 "; }
+
+body.just-connected #view-links > :not(#connect-banner) { display: none; }

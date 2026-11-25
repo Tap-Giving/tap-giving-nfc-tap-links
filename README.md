@@ -45,4 +45,4 @@ dashboard sign-in. Sign in, then click the extension again.
   `src/api/__tests__/extension-session-flow.test.ts` and
   `src/middleware/__tests__/csrf-bearer-exemption.test.ts` in this
   repository.
-- Icons are rendered from `icon.svg` (brand navy #1F3A5F, NFC arcs).
+- Icons are rendered from `icon.svg`, the Tap.Giving logo (gold heart #E2A33C + white radiating arcs on brand navy #1F3A5F; canonical source `website/assets/favicon.svg` in RyanShook/tap-giving).
