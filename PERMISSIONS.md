@@ -1,6 +1,6 @@
-# Tap.Giving NFC Tap Links: permissions note
+# Tap.Giving NFC Tap Disc Links: permissions note
 
-Future Chrome Web Store listing title: **Tap.Giving NFC Tap Links**
+Future Chrome Web Store listing title: **Tap.Giving NFC Tap Disc Links**
 
 This extension is a companion to the Tap.Giving Redirect Dashboard
 (go.tap.giving). Its one job: you are looking at a web page, you click

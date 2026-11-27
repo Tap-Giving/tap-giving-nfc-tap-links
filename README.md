@@ -1,4 +1,4 @@
-# Tap.Giving NFC Tap Links (Chrome extension)
+# Tap.Giving NFC Tap Disc Links (Chrome extension)
 
 A companion to the Tap.Giving Redirect Dashboard (go.tap.giving).
 You are viewing a page; one click points one of your tap links at it.
@@ -8,7 +8,7 @@ You are viewing a page; one click points one of your tap links at it.
 1. Open `chrome://extensions`.
 2. Turn on **Developer mode** (top right).
 3. Click **Load unpacked** and select this directory (the repo root).
-4. Pin "Tap.Giving NFC Tap Links" from the extensions menu if you like.
+4. Pin "Tap.Giving NFC Tap Disc Links" from the extensions menu if you like.
 
 ## Use it
 

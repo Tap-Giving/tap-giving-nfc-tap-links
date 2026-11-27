@@ -1,4 +1,4 @@
-// Tap.Giving NFC Tap Links
+// Tap.Giving NFC Tap Disc Links
 //
 // Companion to the Tap.Giving Redirect Dashboard (go.tap.giving).
 // One job: point one of your tap links at the page you are viewing.
