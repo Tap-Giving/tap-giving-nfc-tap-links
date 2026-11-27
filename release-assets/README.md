@@ -1,32 +1,31 @@
 # Chrome Web Store release assets: Tap.Giving NFC Tap Disc Links
 
-Graphical assets and listing copy for the Chrome Web Store item, built from
-the v1.0.3 package (manifest name "Tap.Giving NFC Tap Disc Links", version
-1.0.3, commit 69981f7). Screenshots are real captures of the real extension
-on the demo church account; tiles are composed from the production brand
-assets (tap-giving repo, website/assets/Logo-Crop-Large-1024x295.png) and
-the site's design tokens (navy #1F3A5F, secondary #395d83, gold #E2A33C,
-Poppins headings, Inter body).
+Graphical assets and listing copy for the Chrome Web Store item.
+FINAL SET, 2026-11-27, superseding the Nov 26 set. Direction: disc
+hardware first, warm, real website disc photography, no corporate-slide
+chrome. The only logo used is the live website's own artwork (gold
+heart, two tap arcs, "Tap.Giving" in Poppins semibold with the gold
+dot), rendered from the site's served SVG; the tap-giving repo's
+Logo-Crop-Large files are a different, wrong mark and are never used
+here. The genuine extension screens are real captures of the v1.0.3
+popup on the demo church account, pasted native-size and unretouched
+(the 1.0.4 package changed only the manifest description, so the
+captures remain current).
 
 ## Slot map
 
 | File | Console slot | Dimensions | Format |
 | --- | --- | --- | --- |
 | store-icon-128.png | Store icon | 128x128 | PNG (the package's icons/icon128.png, unchanged) |
-| screenshot-1-connected-links-1280x800.png | Screenshot 1 (hero): connected popup on the links view, "Connected as demochurch" | 1280x800 | 24-bit PNG, no alpha |
-| screenshot-2-set-destination-confirm-1280x800.png | Screenshot 2: set-destination confirm state | 1280x800 | 24-bit PNG, no alpha |
-| screenshot-3-signed-out-1280x800.png | Screenshot 3: signed-out popup | 1280x800 | 24-bit PNG, no alpha |
-| screenshot-4-dashboard-login-1280x800.png | Screenshot 4: dashboard sign-in page | 1280x800 | 24-bit PNG, no alpha |
-| promo-tile-440x280.png | Small promo tile | 440x280 | 24-bit PNG, no alpha |
-| marquee-promo-tile-1400x560.png | Marquee promo tile | 1400x560 | 24-bit PNG, no alpha |
-| description.md | Listing detailed description (copy of record) | n/a | Markdown text, paste as-is |
+| screenshot-1-hardware-hero-1280x800.png | Screenshot 1 (hero): website disc photography with the real connected popup inset, "Change a link. Keep the disc." | 1280x800 | 24-bit PNG, no alpha |
+| screenshot-2-connected-links-1280x800.png | Screenshot 2: genuine connected links view as demo church, popup native-size over the site's worship photography (blurred, darkened backdrop) | 1280x800 | 24-bit PNG, no alpha |
+| screenshot-3-set-destination-confirm-1280x800.png | Screenshot 3: genuine set-destination confirm state (current and new destinations before anything changes), same backdrop treatment over the site's disc close-up photography | 1280x800 | 24-bit PNG, no alpha |
+| screenshot-4-discs-in-church-1280x800.png | Screenshot 4: website photography, tap discs installed on chair backs across a sanctuary, "Made for the places you gather." | 1280x800 | 24-bit PNG, no alpha |
+| screenshot-5-update-a-tap-link-1280x800.png | Screenshot 5: website photography, a phone tapped to a chair-back disc during a service, "A small change from your browser." | 1280x800 | 24-bit PNG, no alpha |
+| promo-tile-440x280.png | Small promo tile: disc-and-phone photography, live-site logo, "Update tap links." | 440x280 | 24-bit PNG, no alpha |
+| marquee-promo-tile-1400x560.png | Marquee promo tile: the same photography wide, live-site logo, "Keep the disc. Change the destination." | 1400x560 | 24-bit PNG, no alpha |
+| description.md | Listing detailed description | n/a | Markdown text, paste as-is |
 
-The console's global promo video slot takes a YouTube URL only; it is
-intentionally left empty (no video produced).
-
-A fifth screenshot (the post-confirm "verified" result view) is not in the
-set: in the capture pattern used for these shots the popup can only see
-go.tap.giving pages as the current page, and the dashboard API refuses
-those reserved routes as destinations (HTTP 400, infinite-redirect-loop
-guard), so the confirm step cannot complete on camera. The confirm state
-itself is screenshot 2.
+The console's global promo video slot takes a YouTube URL only; the
+promo video and its URL are handled in the submission pack (LISTING.md
+in the submission folder), not in this folder.
